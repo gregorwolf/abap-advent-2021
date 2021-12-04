@@ -28,8 +28,10 @@ CLASS zcl_advent2020_day01_gw IMPLEMENTATION.
     ENDLOOP.
 
     LOOP AT lt_ints ASSIGNING <int>.
-      IF sy-tabix > 1 AND <int> > lt_ints[ sy-tabix - 1 ].
-        out_int = out_int + 1.
+      IF sy-tabix > 1.
+        IF <int> > lt_ints[ sy-tabix - 1 ].
+          out_int = out_int + 1.
+        ENDIF.
       ENDIF.
     ENDLOOP.
 

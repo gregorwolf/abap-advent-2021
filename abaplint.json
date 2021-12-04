@@ -189,7 +189,7 @@
     "identical_conditions": true,
     "identical_contents": true,
     "identical_form_names": true,
-    "if_in_if": true,
+    "if_in_if": false,
     "implement_methods": true,
     "in_statement_indentation": {
       "exclude": [],
