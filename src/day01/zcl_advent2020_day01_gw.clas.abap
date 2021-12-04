@@ -31,11 +31,10 @@ CLASS zcl_advent2020_day01_gw IMPLEMENTATION.
       IF sy-tabix > 1 AND <int> > lt_ints[ sy-tabix - 1 ].
         out_int = out_int + 1.
       ENDIF.
-    ENDIF.
-  ENDLOOP.
+    ENDLOOP.
 
-  output = out_int.
-  CONDENSE output.
+    output = out_int.
+    CONDENSE output.
 
-ENDMETHOD.
+  ENDMETHOD.
 ENDCLASS.
