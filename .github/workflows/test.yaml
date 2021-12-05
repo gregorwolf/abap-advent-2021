@@ -19,5 +19,7 @@ jobs:
       run: npm install
     - name: npm run downport
       run: npm run downport
+    - name: npm run transpile
+      run: npm run transpile
     - name: npm run unit
       run: npm run unit
