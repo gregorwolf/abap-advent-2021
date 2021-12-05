@@ -1,18 +1,18 @@
-CLASS zcl_advent2020_day02_gw DEFINITION
-  PUBLIC
-  FINAL
-  CREATE PUBLIC .
+class ZCL_ADVENT2020_DAY02_GW definition
+  public
+  final
+  create public .
 
-  PUBLIC SECTION.
+public section.
 
-    INTERFACES zif_advent2020_gw .
+  interfaces ZIF_ADVENT2020_GW .
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
 
 
 
-CLASS zcl_advent2020_day02_gw IMPLEMENTATION.
+CLASS ZCL_ADVENT2020_DAY02_GW IMPLEMENTATION.
 
 
   METHOD zif_advent2020_gw~solve.
