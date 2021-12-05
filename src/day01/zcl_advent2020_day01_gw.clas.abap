@@ -84,7 +84,7 @@ CLASS zcl_advent2020_day01_gw IMPLEMENTATION.
         ints  = DATA(ints)
     ).
 
-    DESCRIBE TABLE ints LINES number_of_ints.
+    number_of_ints = lines( ints ).
     IF number_of_ints < 4.
       WRITE / 'input does contain less than 4 lines so there is nothing to compare'.
       RETURN.
