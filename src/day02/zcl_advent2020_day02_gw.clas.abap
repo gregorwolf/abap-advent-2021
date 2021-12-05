@@ -46,7 +46,7 @@ CLASS zcl_advent2020_day02_gw IMPLEMENTATION.
   METHOD part1.
     DATA: x TYPE int4,
           y TYPE int4.
-    DATA(intructions) = input_to_intructions( input = input ).
+    DATA(intructions) = input_to_intructions( input ).
 
     LOOP AT intructions ASSIGNING FIELD-SYMBOL(<intruction>).
       CASE <intruction>-direction.

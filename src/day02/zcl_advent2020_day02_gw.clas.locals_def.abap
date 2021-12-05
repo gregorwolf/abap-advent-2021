@@ -9,6 +9,6 @@ TYPES: BEGIN OF ty_intruction,
 TYPES: BEGIN OF ty_intruction_with_key,
          step TYPE int4.
          INCLUDE TYPE ty_intruction.
-       TYPES: END OF ty_intruction_with_key.
+TYPES: END OF ty_intruction_with_key.
 
 TYPES: ty_intructions TYPE TABLE OF ty_intruction_with_key WITH KEY step.
