@@ -87,7 +87,7 @@ CLASS zcl_advent2020_day01_gw IMPLEMENTATION.
     DESCRIBE TABLE ints LINES number_of_ints.
     IF number_of_ints < 4.
       WRITE / 'input does contain less than 4 lines so there is nothing to compare'.
-      EXIT.
+      RETURN.
     ENDIF.
 
     LOOP AT ints ASSIGNING FIELD-SYMBOL(<int>).
