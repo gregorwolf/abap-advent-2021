@@ -11,6 +11,11 @@ CLASS zcl_advent2020_day02_gw DEFINITION
         IMPORTING
           !input        TYPE string
         RETURNING
+          VALUE(output) TYPE string,
+      part2
+        IMPORTING
+          !input        TYPE string
+        RETURNING
           VALUE(output) TYPE string.
   PROTECTED SECTION.
   PRIVATE SECTION.
@@ -64,10 +69,33 @@ CLASS zcl_advent2020_day02_gw IMPLEMENTATION.
 
   ENDMETHOD.
 
+  METHOD part2.
+    DATA: x   TYPE int4,
+          y   TYPE int4,
+          aim TYPE int4.
+    DATA(intructions) = input_to_intructions( input ).
+
+    LOOP AT intructions ASSIGNING FIELD-SYMBOL(<intruction>).
+      CASE <intruction>-direction.
+        WHEN 'forward'.
+          x = x + <intruction>-units.
+          y = y + aim * <intruction>-units.
+        WHEN 'down'.
+          aim = aim + <intruction>-units.
+        WHEN 'up'.
+          aim = aim - <intruction>-units.
+      ENDCASE.
+    ENDLOOP.
+    DATA(out_int) = x * y.
+    output = out_int.
+    CONDENSE output.
+
+  ENDMETHOD.
 
   METHOD zif_advent2020_gw~solve.
 
-    output = part1( input ).
+    output = part2( input ).
 
   ENDMETHOD.
+
 ENDCLASS.
