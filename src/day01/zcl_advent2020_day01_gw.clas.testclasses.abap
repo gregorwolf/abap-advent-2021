@@ -30,7 +30,6 @@ CLASS ltcl_test IMPLEMENTATION.
         act = lv_result
         exp = |5| ).
 
-
   ENDMETHOD.
 
 ENDCLASS.
