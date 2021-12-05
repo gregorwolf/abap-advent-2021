@@ -23,7 +23,7 @@ CLASS ltcl_test IMPLEMENTATION.
 
   ENDMETHOD.
 
-    METHOD part2.
+  METHOD part2.
 
     DATA(lv_result) = mo_cut->part2( |199\n200\n208\n210\n200\n207\n240\n269\n260\n263| ).
     cl_abap_unit_assert=>assert_equals(

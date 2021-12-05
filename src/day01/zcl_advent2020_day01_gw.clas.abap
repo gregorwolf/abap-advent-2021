@@ -23,8 +23,8 @@ CLASS zcl_advent2020_day01_gw DEFINITION
       input_to_ints
         IMPORTING
           !input      TYPE string
-        EXPORTING
-          VALUE(ints) TYPE tt_ints.
+        RETURNING
+          VALUE(ints) TYPE ty_ints.
 ENDCLASS.
 
 
@@ -34,7 +34,7 @@ CLASS zcl_advent2020_day01_gw IMPLEMENTATION.
 
   METHOD zif_advent2020_gw~solve.
 
-    output = me->part2( input ).
+    output = part2( input ).
 
   ENDMETHOD.
 
@@ -51,12 +51,7 @@ CLASS zcl_advent2020_day01_gw IMPLEMENTATION.
   METHOD part1.
     DATA out_int TYPE int4.
 
-    me->input_to_ints(
-      EXPORTING
-        input = input
-      IMPORTING
-        ints  = DATA(ints)
-    ).
+    DATA(ints) = input_to_ints( input ).
 
     LOOP AT ints ASSIGNING FIELD-SYMBOL(<int>).
       IF sy-tabix > 1.
@@ -72,31 +67,24 @@ CLASS zcl_advent2020_day01_gw IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD part2.
-    DATA: out_int            TYPE int4,
-          number_of_ints     TYPE int4,
-          sum_first_window   TYPE int4,
-          sum_second_wondows TYPE int4.
+    DATA: out_int            TYPE int4.
 
-    me->input_to_ints(
-      EXPORTING
-        input = input
-      IMPORTING
-        ints  = DATA(ints)
-    ).
+    DATA(ints) = input_to_ints( input ).
 
-    number_of_ints = lines( ints ).
+    DATA(number_of_ints) = lines( ints ).
     IF number_of_ints < 4.
       WRITE / 'input does contain less than 4 lines so there is nothing to compare'.
       RETURN.
     ENDIF.
 
     LOOP AT ints ASSIGNING FIELD-SYMBOL(<int>).
-      IF sy-tabix + 3 <= number_of_ints.
-        sum_first_window = ints[ sy-tabix ] + ints[ sy-tabix + 1 ] + ints[ sy-tabix + 2 ].
-        sum_second_wondows = ints[ sy-tabix + 1 ] + ints[ sy-tabix + 2 ] + ints[ sy-tabix + 3 ].
-        IF sum_first_window < sum_second_wondows.
-          out_int = out_int + 1.
-        ENDIF.
+      IF sy-tabix + 3 >= number_of_ints.
+        EXIT.
+      ENDIF.
+      DATA(sum_first_window) = <int> + ints[ sy-tabix + 1 ] + ints[ sy-tabix + 2 ].
+      DATA(sum_second_window) = ints[ sy-tabix + 1 ] + ints[ sy-tabix + 2 ] + ints[ sy-tabix + 3 ].
+      IF sum_first_window < sum_second_window.
+        out_int = out_int + 1.
       ENDIF.
     ENDLOOP.
 
