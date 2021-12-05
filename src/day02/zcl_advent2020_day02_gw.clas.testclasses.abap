@@ -14,11 +14,11 @@ CLASS ltcl_test IMPLEMENTATION.
 
   METHOD solve.
 
-    DATA(lv_result) = mo_cut->zif_advent2020_gw~solve( |199\n200\n208\n210\n200\n207\n240\n269\n260\n263| ).
+    DATA(lv_result) = mo_cut->part1( |forward 5\ndown 5\nforward 8\nup 3\ndown 8\nforward 2| ).
 
     cl_abap_unit_assert=>assert_equals(
         act = lv_result
-        exp = |todo| ).
+        exp = |150| ).
 
   ENDMETHOD.
 
