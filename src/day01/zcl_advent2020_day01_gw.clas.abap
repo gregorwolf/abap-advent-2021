@@ -78,11 +78,12 @@ CLASS zcl_advent2020_day01_gw IMPLEMENTATION.
     ENDIF.
 
     LOOP AT ints ASSIGNING FIELD-SYMBOL(<int>).
+      DATA(tabix) = sy-tabix.
       IF sy-tabix + 3 > number_of_ints.
         EXIT.
       ENDIF.
-      DATA(sum_first_window) = <int> + ints[ sy-tabix + 1 ] + ints[ sy-tabix + 2 ].
-      DATA(sum_second_window) = ints[ sy-tabix + 1 ] + ints[ sy-tabix + 2 ] + ints[ sy-tabix + 3 ].
+      DATA(sum_first_window) = <int> + ints[ tabix + 1 ] + ints[ tabix + 2 ].
+      DATA(sum_second_window) = ints[ tabix + 1 ] + ints[ tabix + 2 ] + ints[ tabix + 3 ].
       IF sum_first_window < sum_second_window.
         out_int = out_int + 1.
       ENDIF.
